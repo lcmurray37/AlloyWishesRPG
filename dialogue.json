@@ -1,0 +1,36 @@
+{
+  "intro": {
+    "narrator": "Welcome to the Text RPG Game!",
+    "player_name_prompt": "Enter your name: "
+  },
+  "enemies": {
+    "Goblin": {
+      "intro": "A wild Goblin appears!",
+      "defeat": "You defeated the Goblin!"
+    },
+    "Troll": {
+      "intro": "A menacing Troll blocks your path!",
+      "defeat": "The Troll has been vanquished!"
+    },
+    "Dragon": {
+      "intro": "A fearsome Dragon swoops down from above!",
+      "defeat": "You have slain the mighty Dragon!"
+    }
+  },
+  "player": {
+    "victory": "Victory is mine!",
+    "defeat": "Game over. You have been defeated."
+  },
+  "actions": {
+    "attack": {
+      "player": "You attack the {enemy} for {damage} damage.",
+      "enemy": "The {enemy} attacks you for {damage} damage."
+    },
+    "defend": {
+      "success": "You defend against the {enemy}'s attack.",
+      "failure": "You fail to defend fully. You take {damage} damage."
+    },
+    "continue_prompt": "Do you want to continue playing? (yes/no): ",
+    "thanks": "Thanks for playing!"
+  }
+}
