@@ -4,6 +4,39 @@ import json
 import os
 import json
 
+def intro_screen():
+    # ASCII art for "ALLOY"
+    title = """
+    AAAAA  L      L      OOO   Y   Y
+    A   A  L      L     O   O   Y Y 
+    AAAAA  L      L     O   O    Y  
+    A   A  L      L      OOO     Y  
+    """
+
+    # Clear screen (for demonstration purpose)
+    print("\033c", end="")
+
+    # Print title with delay for animation effect
+    for line in title.splitlines():
+        print(line)
+        time.sleep(0.1)
+
+    # Optional delay before clearing the screen
+    time.sleep(1)
+
+    # Clear screen (for demonstration purpose)
+    print("\033c", end="")
+
+# Example usage:
+intro_screen()
+
+# Create typing effect
+def print_with_typing_effect(text, delay=0.05):
+    for char in text:
+        print(char, end='', flush=True)  # Use end='' to print characters without newline
+        time.sleep(delay)  # Adjust delay for typing speed
+    print()  # Print newline after complete text
+
 # Load dialogue from JSON file
 def load_dialogue(filename):
     script_dir = os.path.dirname(__file__)  # Get the directory of the current script
@@ -13,7 +46,7 @@ def load_dialogue(filename):
 
 # Example usage
 dialogue = load_dialogue('dialogue.json')
-    
+
 # Define player class
 class Player:
     def __init__(self, name):
@@ -105,6 +138,8 @@ def start_game(dialogue):
     print(dialogue['intro']['narrator'])
     player_name = input(dialogue['intro']['player_name_prompt']).strip()
     player = Player(player_name)
+
+    print_with_typing_effect(dialogue['initialreply']['narrator'].replace("{player}", player_name))
 
     enemies = [Enemy("Goblin", 20, 5), Enemy("Troll", 30, 8), Enemy("Dragon", 50, 15)]
 

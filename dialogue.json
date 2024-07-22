@@ -1,7 +1,10 @@
 {
   "intro": {
-    "narrator": "Welcome to the Text RPG Game!",
-    "player_name_prompt": "Enter your name: "
+    "narrator": "Hello. I'd like to welcome you to Alloy Wishes RPG - a text based pygame. It's good of you to join me. Say, dearie, what's your name?",
+    "player_name_prompt": "Ern...my name is..."
+  },
+  "initialreply":{
+    "narrator": "It's lovely of you to join me, {player}"
   },
   "enemies": {
     "Goblin": {
