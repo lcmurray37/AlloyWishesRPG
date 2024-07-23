@@ -1,8 +1,12 @@
+from colorama import init, Fore
 import random
 import time
 import json
 import os
 import json
+
+# Initialize colorama
+init(autoreset=True)
 
 def intro_screen():
     # ASCII art for "ALLOY"
@@ -27,8 +31,30 @@ def intro_screen():
     # Clear screen (for demonstration purpose)
     print("\033c", end="")
 
-# Example usage:
-intro_screen()
+# Function to print game over with flashing animation
+def game_over_animation():
+    # ASCII art for game over
+    game_over = """
+      _____          __  __ ______    ______      ________ _____  
+     / ____|   /\   |  \/  |  ____|  / __ \ \    / /  ____|  __ \ 
+    | |  __   /  \  | \  / | |__    | |  | \ \  / /| |__  | |__) |
+    | | |_ | / /\ \ | |\/| |  __|   | |  | |\ \/ / |  __| |  _  / 
+    | |__| |/ ____ \| |  | | |____  | |__| | \  /  | |____| | \ \ 
+     \_____/_/    \_\_|  |_|______|  \____/   \/   |______|_|  \_|
+    """
+    # Clear screen (for demonstration purpose)
+    print("\033c", end="")
+
+    # Print title with delay for animation effect
+    for line in game_over.splitlines():
+        print(line)
+        time.sleep(0.1)
+
+    # Optional delay before clearing the screen
+    time.sleep(1)
+
+    # Clear screen (for demonstration purpose)
+    print("\033c", end="")
 
 # Create typing effect
 def print_with_typing_effect(text, delay=0.05):
@@ -44,7 +70,10 @@ def load_dialogue(filename):
     with open(filepath, 'r') as file:
         return json.load(file)
 
-# Example usage
+# Play Intro:
+intro_screen()
+
+# Play Dialogue:
 dialogue = load_dialogue('dialogue.json')
 
 # Define player class
@@ -151,6 +180,7 @@ def start_game(dialogue):
 
         choice = input(dialogue['actions']['continue_prompt']).strip().lower()
         if choice != 'yes':
+            game_over_animation()
             game_running = False
 
     print(dialogue['actions']['thanks'])
